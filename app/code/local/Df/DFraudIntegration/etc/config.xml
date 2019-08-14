@@ -3,7 +3,7 @@
 <config>
 	<modules>
 		<Df_DFraudIntegration>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</Df_DFraudIntegration>
 	</modules>
 	<global>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Df_DFraudIntegration</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>The DFraud Integration extension helps magento site admins to identify fruad orders.</summary>
+    <description>The Dfraud integration performs 15 checks to identify the fruaud order so that its easy for site admins to identify fraud orders.</description>
+    <notes>The Dfraud integration performs 15 checks to identify the fruaud order so that its easy for site admins to identify fraud orders.</notes>
+    <authors><author><name>Biju Thajudien</name><user>bijuthaj</user><email>mailtobiju@gmail.com</email></author></authors>
+    <date>2013-06-06</date>
+    <time>17:53:33</time>
+    <contents><target name="magelocal"><dir name="Df"><dir name="DFraudIntegration"><dir name="Block"><dir name="Adminhtml"><dir name="Order"><dir name="View"><dir name="Tab"><file name="Dfraud.php" hash="3ebba9d972f9ff19c3b0c9b464840ae9"/></dir></dir></dir><dir name="Sales"><dir name="Order"><file name="Dfraud.php" hash="ec55335f14b3adf56649d3e081f99f38"/></dir></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="e278ed6b55796eef3000ef459680fb3e"/></dir><dir name="Model"><file name="Dfraud.php" hash="5f0040d5f36cefd3f8fe4934e2ce06a8"/><file name="HighriskCountries.php" hash="d2d957dd4af7c0a124027003e23c9d42"/><file name="Observer.php" hash="c8bfd8bea285fcf9b22416a24d61750f"/><dir name="Resource"><file name="Dfraud.php" hash="a1d158afb971c3bf72ea487e97300e2e"/><file name="HighriskCountries.php" hash="a662b20d8c82322181fd654b2f5b1c66"/><file name="Scores.php" hash="d930d4b38f744d4b80b4e61ac6d16912"/><file name="Setup.php" hash="852be8f15c3cc83671daddf449e78b47"/></dir><file name="Scores.php" hash="c104ec746c14a40488043bba4cbd86a5"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="DfraudController.php" hash="5230eae76462009471a73e340be043bd"/></dir></dir><dir name="etc"><file name="config.xml" hash="cd1d49b3796e466b571f16ab6a87878b"/><file name="system.xml" hash="56a1d181014706bc19def7d63a5cf399"/></dir><dir name="sql"><dir name="dfraudintegration_setup"><file name="mysql4-install-1.0.0.php" hash="82e29518d79f0b485c827b575763ff75"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="dfraudintegration.xml" hash="6154540dc6253d842f9ad74430993a11"/></dir><dir name="template"><dir name="dfraudintegration"><file name="dfraud.phtml" hash="4225212d04d90b4a84c44337cd9d8d3f"/><file name="note-create.phtml" hash="90bc4162eeb8834afc64a391316a01d0"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Df_DFraudIntegration.xml" hash="8445e26ba8008487227c017f04d77b21"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

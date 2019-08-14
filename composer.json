@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Df_DFraudIntegration",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "The DFraud Integration extension helps magento site admins to identify fruad orders.",
+    "authors": [
+    {
+        "name": "Biju Thajudien",
+        "email": "mailtobiju@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

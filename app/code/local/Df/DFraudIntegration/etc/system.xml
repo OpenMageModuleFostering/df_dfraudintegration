@@ -1,0 +1,70 @@
+<config>
+    <tabs>
+        <dfraudintegration translate="label" module="dfraudintegration">
+            <label>DFraud Integration</label>
+            <sort_order>999999</sort_order>
+        </dfraudintegration>
+    </tabs> 
+    <sections>
+        <dfraudintegration_options translate="label" module="dfraudintegration">
+            <label>DFraud Integration Options</label>
+            <tab>dfraudintegration</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>  
+			<groups>
+                <basic_settings translate="label">
+                    <label>Basic Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                
+					<fields>
+						<licence_key translate="label">
+                            <label>Licence Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>The licence key for DFraud integration module.</comment>	
+                        </licence_key>
+					</fields>       
+                </basic_settings>
+				<dfraud_module_settings>
+					<label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>    
+					<comment>Use this section to set the fraud check values.</comment>					
+					<fields>
+						<maximum_distance translate="label">
+							<label>Maximum distance between billing and IP address</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>                    
+							<validate>validate-number</validate>
+						</maximum_distance>
+						<maximum_order_amount translate="label">
+							<label>Maximum order amount for the store</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>                    
+							<validate>validate-number</validate>
+							<comment>Set this value to an average value of an order in your store. DFraud module will get this value to validate the order amount.</comment>					
+						</maximum_order_amount>
+					</fields>       
+				</dfraud_module_settings>
+            </groups>			
+        </dfraudintegration_options>
+    </sections>     
+</config>

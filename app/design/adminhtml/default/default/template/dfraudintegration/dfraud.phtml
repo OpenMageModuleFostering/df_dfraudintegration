@@ -1,0 +1,560 @@
+<?php $result = Mage::registry('data'); ?>
+<div class="box-left">
+    <!--Address Checking-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Order Address Checks</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody><tr>
+                <td class="label"><label>Billing and Shipping address match</label></td>
+                <td class="value">
+					<?php 
+						if(count($result['address']) > 1) {?>
+							<strong>NO</strong>
+						<? } else { ?>
+							<strong>YES</strong>
+						<? } ?>
+				</td>
+            </tr>
+			<?php 
+			if(isset($result['address'])) {?>
+            	<tr>
+                	<td class="label"><label>Mismatches</label></td>
+                	<td  width="500">
+						<table>
+							<tr>
+								<td></td>
+								<td><strong>Billing</strong></td>
+								<td><strong>Shipping</strong></td>
+							</tr>
+							<? if(isset($result['address']['street']['billing'])) {?>
+							<tr>
+								<td width="60"><strong>Street</strong></td>
+								<td width="120"><? echo $result['address']['street']['billing'] ?></td>
+								<td width="120"><? echo $result['address']['street']['shipping'] ?></td>
+							</tr>
+							<? } ?> 
+							
+							<? if(isset($result['address']['city']['billing'])) {?>
+							<tr>
+								<td width="60"><strong>City</strong></td>
+								<td width="120"><? echo $result['address']['city']['billing'] ?></td>
+								<td width="120"><? echo $result['address']['city']['shipping'] ?></td>
+							</tr>
+							<? } ?> 
+							
+							<? if(isset($result['address']['region']['billing'])) {?>
+							<tr>
+								<td width="60"><strong>Region</strong></td>
+								<td width="120"><? echo $result['address']['region']['billing'] ?></td>
+								<td width="120"><? echo $result['address']['region']['shipping'] ?></td>
+							</tr>
+							<? } ?> 
+							
+							<? if(isset($result['address']['country_id']['billing'])) {?>
+							<tr>
+								<td width="60"><strong>Country</strong></td>
+								<td width="120"><? echo $result['address']['country_id']['billing'] ?></td>
+								<td width="120"><? echo $result['address']['country_id']['shipping'] ?></td>
+							</tr>
+							<? } ?> 
+							
+							<? if(isset($result['address']['postcode']['billing'])) {?>
+							<tr>
+								<td width="60"><strong>PostCode</strong></td>
+								<td width="120"><? echo $result['address']['postcode']['billing'] ?></td>
+								<td width="120"><? echo $result['address']['postcode']['shipping'] ?></td>
+							</tr>
+							<? } ?>
+						</table>
+					</td>
+            	</tr>
+			<? } ?>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['address']['score']['total']." / ".$result['address']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>	
+           </tbody></table>
+        </div>
+    </div>
+</div>
+
+<div class="box-right">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Post code Checks</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"><label>Billing Post Code Location</label></td>
+                <td class="value">
+					<?php echo $result['post_loc']['billing']; ?>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Shipping Post Code Location</label></td>
+                <td class="value">
+					<?php echo $result['post_loc']['shipping']; ?>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['post_loc']['score']['total']." / ".$result['post_loc']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="box-right">
+    <!--Account Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-account">IP Location Checks</h4>
+            <div class="tools"></div>
+        </div>
+        <div class="fieldset">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                <tbody>
+				<tr>
+                    <td class="label"><label>IP Address</label></td>
+                    <td class="value"><? echo $result['ip']['location']['ip'] ?></td>
+                </tr>
+				<tr>
+                    <td class="label"><label>IP Latitude</label></td>
+                    <td class="value"><? echo $result['ip']['location']['latitude'] ?></td>
+                </tr>
+                <tr>
+                    <td class="label"><label>IP Longitude</label></td>
+                    <td class="value"><? echo $result['ip']['location']['longitude'] ?></td>
+                </tr>
+                 <tr>
+                    <td class="label"><label>IP Location</label></td>
+                    <td class="value"><? echo $result['ip']['location']['loc_str'] ?></td>
+                </tr>
+				<tr>
+                    <td class="label"><label>IP and Billing Address Match</label></td>
+                    <td class="value">
+						<strong>
+						<? if(isset($result['ip']['ip_bill_diff'])) 
+								echo "NO";
+							else 
+								echo "YES"; 
+						?>
+						</strong>
+					</td>
+                </tr>
+				<?php 
+			if(isset($result['ip'])) {?>
+            	<tr>
+                	<td class="label"><label>Details</label></td>
+                	<td width="400">
+						<table>
+							<tr>
+								<td></td>
+								<td><strong>IP</strong></td>
+								<td><strong>Billing</strong></td>
+								<td><strong>Shipping</strong></td>
+							</tr>
+							
+							<tr>
+								<td width="60"><strong>City</strong></td>
+								<td width="100"><? echo $result['ip']['city']['ip'] ?></td>
+								<td width="100"><? echo $result['ip']['city']['billing'] ?></td>
+								<td width="100"><? echo $result['ip']['city']['shipping'] ?></td>
+							</tr>
+							<tr>
+								<td><strong>Region</strong></td>
+								<td><? echo $result['ip']['region']['ip'] ?></td>
+								<td><? echo $result['ip']['region']['billing'] ?></td>
+								<td><? echo $result['ip']['region']['shipping'] ?></td>
+							</tr>
+							<tr>
+								<td><strong>Country</strong></td>
+								<td><? echo $result['ip']['country_id']['ip'] ?></td>
+								<td><? echo $result['ip']['country_id']['billing'] ?></td>
+								<td><? echo $result['ip']['country_id']['shipping'] ?></td>
+							</tr>
+						
+						</table>
+					</td>
+            	</tr>
+				<? } ?>	
+				<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['ip']['score']['total']." / ".$result['ip']['score']['max']; ?>			
+					</strong>
+				</td>
+            	</tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Credit Card BIN Checks</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<? if( isset($result['bin']['err']) ) { ?>
+			<tr>
+                <td width="400">
+					<strong><i><? echo $result['bin']['err']; ?></i></strong>
+				</td>
+            </tr>
+			<? } else { ?>
+			<tr>
+                <td class="label"><label>CC Country</label></td>
+                <td class="value">
+					<strong><? echo $result['bin']['binCountry']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>CC Bank</label></td>
+                <td class="value">
+					<strong><? echo $result['bin']['binName']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Bank Phone</label></td>
+                <td class="value">
+					<strong><? echo $result['bin']['binPhone']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Is Billing & CC Country Match?</label></td>
+                <td class="value">
+					<strong><? echo $result['bin']['country_match']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['bin']['score']['total']." / ".$result['bin']['score']['max']; ?>			
+					</strong>
+				</td>
+            	</tr>
+			<? } ?>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Order Amount Check</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"><label>Is Order amount greater that maximum?</label></td>
+                <td class="value">
+					<strong>
+						<? echo $result['ammount_check']['amount_higher'];	?>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Order Amount</label></td>
+                <td class="value">
+					<strong><? echo $result['ammount_check']['amount'];	?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Max Amount</label></td>
+                <td class="value">
+					<strong><? echo $result['ammount_check']['max_amount'];	?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['ammount_check']['score']['total']." / ".$result['ammount_check']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<div class="box-right">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">High Risk Country Checks</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"><label>Is Billing Country High Risk?</label></td>
+                <td class="value">
+					<strong>
+						<? if(isset($result['hrc']['billing'])) 
+								echo "YES";
+							else 
+								echo "NO"; 
+						?>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Is Shipping Country High Risk?</label></td>
+                <td class="value">
+					<strong>
+						<? if(isset($result['hrc']['shipping'])) 
+								echo "YES";
+							else 
+								echo "NO"; 
+						?>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Is IP Country High Risk?</label></td>
+                <td class="value">
+					<strong>
+						<? if(isset($result['hrc']['ip'])) 
+								echo "YES";
+							else 
+								echo "NO"; 
+						?>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['hrc']['score']['total']." / ".$result['hrc']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Order History</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"><label>Total Orders from User</label></td>
+                <td class="value">
+					<strong><? echo $result['order_history_cust']['user']['count']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Order Status : </label></td>
+                <td class="value">
+					<strong>
+					<table>
+					<?
+					foreach($result['order_history_cust']['user']['status'] as $key=>$status) { 
+					if($status > 0 ) {
+					?>
+						<tr>
+							<td  width="150"><? echo $key; ?></td>
+							<td><? echo $status; ?></td>
+						</tr>
+					<? } } ?>
+					</table>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Total Orders from IP</label></td>
+                <td class="value">
+					<strong><? echo $result['order_history_cust']['ip']['count']; ?></strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Order Status : </label></td>
+                <td class="value">
+					<strong>
+					<table>
+					<?
+					foreach($result['order_history_cust']['ip']['status'] as $key=>$status) { 
+					if($status > 0 ) {
+					?>
+						<tr>
+							<td width="150"><? echo $key; ?></td>
+							<td><? echo $status; ?></td>
+						</tr>
+					<? } } ?>
+					</table>
+					</strong>
+				</td>
+            </tr>
+            <tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['order_history_cust']['score']['total']." / ".$result['order_history_cust']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<div class="box-right">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Geo Location Checks</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"><label>Distance between Billing/Shipping Location</label></td>
+                <td class="value"><? echo $result['dis']['bill_ship'] ?> KM</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Distance between Billing/IP Location</label></td>
+                <td class="value"><? echo $result['dis']['ip_bill'] ?> KM</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Distance between Shipping/IP Location</label></td>
+                <td class="value"><? echo $result['dis']['ip_ship'] ?> KM</td>
+            </tr>
+			
+			<tr>
+                <td class="label"><label>Billing Address - Nearest Verified Location</label></td>
+                <td class="value"><? echo $result['billingGeoResult']['formatted_address'] ?></td>
+            </tr>
+			<tr>
+                <td class="label"><label>Check Type</label></td>
+                <td class="value"><? echo $result['billingGeoResult']['type'] ?></td>
+            </tr>
+			<tr>
+                <td class="label"><label>Shipping address - Nearest Verified Location</label></td>
+                <td class="value"><? echo $result['shippingGeoResult']['formatted_address'] ?></td>
+            </tr>
+			<tr>
+                <td class="label"><label>Check Type</label></td>
+                <td class="value"><? echo $result['shippingGeoResult']['type'] ?></td>
+            </tr>
+			<tr>
+                <td class="label"><label>Score</label></td>
+                <td class="value">
+					<strong>
+					<?php echo $result['dis']['score']['total']." / ".$result['dis']['score']['max']; ?>			
+					</strong>
+				</td>
+            </tr>
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-account">Risk Score Summary</h4>
+                </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<tr>
+                <td class="label"  width="200"><strong>Issues</strong></td>
+                <td class="label"  width="200"><strong>Risk</strong></td>
+            </tr>
+			<?php 
+			foreach($result['summary']['issues'] as $summary) { ?>
+				<tr>
+					<td class="value" width="200">
+							<? echo $summary['desc']; ?>	
+					</td>
+					<td class="value">
+						<strong><? echo $summary['risk']; ?></strong><br/>
+					</td>
+				</tr>
+			<? } ?>
+			<tr>
+                <td class="label" colspan="2"></td>
+             </tr>	
+			<tr>
+                <td class="label"><label>Total score</label></td>
+                <td class="value">
+					<strong>
+						<?php echo $result['score']['total']." / ".$result['score']['max']; ?>
+					</strong>
+				</td>
+            </tr>
+			<tr>
+                <td class="label"><label>Risk Assesment</label></td>
+                <td class="value">
+					<strong>
+						<?php echo $result['summary']['risk']; ?>
+					</strong>
+				</td>
+            </tr>
+			
+			</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="entry-edit-head" id='dfraudintegration'>
+	<h4 class="icon-head head-deliverynote"><?php echo $this->__(Mage::helper('dfraudintegration')->getFrontendLabel()) ?></h4>
+</div>-->
+
+
+<?php  //$data = Mage::registry('data'); echo "<pre>";print_r($data);?>

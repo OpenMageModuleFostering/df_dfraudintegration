@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<layout>
+    <!-- Orders -->
+	<!--<adminhtml_sales_order_view>
+		<reference name="order_tab_info">
+			<action method="setTemplate" ifconfig="dfraudintegration_options/basic_settings/plug_and_play">
+				<template>dfraudintegration/sales/order/view/tab/info.phtml</template>
+			</action>
+			<block type="dfraudintegration/adminhtml_sales_order_dfraud" name="dfraudintegration" template="dfraudintegration/dfraud.phtml" />
+		</reference>
+	</adminhtml_sales_order_view>-->
+		<adminhtml_sales_order_view>
+				<reference name="sales_order_tabs">
+					<action method="addTab">
+						<name>DFraud Data</name>
+						<block>dfraudintegration/adminhtml_order_view_tab_dfraud</block>
+					</action>
+				</reference>
+			</adminhtml_sales_order_view>
+</layout>

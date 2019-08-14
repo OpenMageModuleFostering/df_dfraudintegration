@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Df_DFraudIntegration>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Df_DFraudIntegration>
+  </modules>
+</config>
